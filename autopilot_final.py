@@ -2,7 +2,7 @@ import math
 import time
 import krpc
 
-turn_start_altitude = 2000
+turn_start_altitude = 0
 turn_end_altitude = 45000
 target_altitude = 100000
 max_turn_angle = 90
@@ -50,7 +50,7 @@ while True:
     # Gravity turn
     if altitude() > turn_start_altitude and altitude() < turn_end_altitude:
         turn_angle = ((altitude() - turn_start_altitude) * (max_turn_angle - min_turn_angle)) / (
-                    turn_end_altitude - turn_start_altitude) + min_turn_angle
+                turn_end_altitude - turn_start_altitude) + min_turn_angle
         vessel.auto_pilot.target_pitch_and_heading(90 - turn_angle, 90)
         if not first_stage_separated:
             # if altitude() >= 23000:
